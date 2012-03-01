@@ -83,7 +83,11 @@
     (function () {
         // Set up gallery size based on thumb size and number of thumbs.
         // Layout is N x M thumbs, where N is the sqrt(NUM_THUMBS) and M is N
-        // plus enough extra rows to accomodate what's left over.
+        // plus enough extra rows to accomodate what's left over. E.g. 16 thumbs
+        // means a 4 x 4 layout, but 17 thumbs means a 4 x 4 layour with 1 left
+        // over at the bottom (i.e. 1 extra row needed). 21 thumbs means 5 left
+        // over (i.e. 2 extra rows needed), and so on until we get to 25 thumbs,
+        // which switches to a 5 x 5 layout.
 
         var tempThumb = document.createElement("div"),
             frag = document.createDocumentFragment(),
