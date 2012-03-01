@@ -26,6 +26,7 @@ body {
 #galSurface {
     position: absolute;
     overflow: visible;
+    border: 1px solid #124;
 }
 
 .thumb {
