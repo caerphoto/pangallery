@@ -14,9 +14,50 @@
         NUM_THUMBS = 25,
         MARGIN = 80,
 
+        transformProperty,
+        transform,
+
         clientToNormal, normalToClient,
 
         moveHandler, renderThumbs;
+
+    transformProperty = (function () {
+        // Detect what CSS transform property to use if possible.
+        // Detection method by Zachary Johnson:
+        // http://www.zachstronaut.com/posts/2009/02/17/animate-css-transforms-firefox-webkit.html
+        var e = document.createElement("div"),
+            properties = [
+                    'transform',
+                    'WebkitTransform',
+                    'msTransform',
+                    'MozTransform',
+                    'OTransform'
+                ],
+            p;
+
+        while (p = properties.shift()) {
+            if (typeof e.style[p] !== "undefined") {
+                return p;
+            }
+        }
+
+        return false;
+    }());
+
+    // Use a CSS transform if possible, for better rendering performance,
+    // otherwise set the top/left property of the element.
+    if (transformProperty) {
+        transform = function (e, x, y) {
+            e.style[transformProperty] = [
+                "translate(", x, "px,", y, "px)"
+            ].join("");
+        };
+    } else {
+        transform = function (e, x, y) {
+            e.style.left = x + "px";
+            e.style.top = y + "px";
+        };
+    }
 
     clientToNormal = function (point) {
         // Translate the given client coordinates from (0..w, 0..h) to
@@ -40,7 +81,7 @@
     };
 
     moveHandler = function (evt) {
-        var cpoint, npoint, gpoint;
+        var cpoint, npoint, gpoint, debugOut;
 
         cpoint = { x: evt.clientX, y: evt.clientY };
 
@@ -62,8 +103,9 @@
             "gx: ", gpoint.x, ", gy: ", gpoint.y
         ].join("");
 
-        galSurface.style.left = gpoint.x + "px";
-        galSurface.style.top = gpoint.y + "px";
+
+        transform(galSurface, gpoint.x, gpoint.y);
+
     };
 
     renderThumbs = function () {

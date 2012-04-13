@@ -16,4 +16,4 @@ which is not terribly convenient for maintenance. Need to fix that.
 I've set up a [demo page] on my site if you want to see what it looks like
 before investigating further.
 
-[demo page]: http://caerphoto.com/misc/pangallery/pangallery.html
+[demo page]: http://caerphoto.com/pangallery/pangallery.html
