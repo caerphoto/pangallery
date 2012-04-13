@@ -39,7 +39,12 @@ body {
 
     border: 1px solid #248;
     background-color: rgba(0, 192, 255, 0.3);
+
     -webkit-transition: background-color 0.5s ease-in-out;
+    -moz-transition: background-color 0.5s ease-in-out;
+    -ms-transition: background-color 0.5s ease-in-out;
+    -o-transition: background-color 0.5s ease-in-out;
+    transition: background-color 0.5s ease-in-out;
 
     cursor: pointer;
 
@@ -49,8 +54,16 @@ body {
     background-color: rgba(64, 192, 255, 1.0);
     box-shadow: 0 0 30px #aef;
     border-color: #aef;
+
     -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
     transform: scale(1.5);
 
     -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
 }
