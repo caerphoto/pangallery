@@ -38,17 +38,19 @@ body {
     margin: 80px;
 
     border: 1px solid #248;
-    background: rgba(0, 192, 255, 0.3);
+    background-color: rgba(0, 192, 255, 0.3);
+    -webkit-transition: background-color 0.5s ease-in-out;
 
     cursor: pointer;
 
-    -webkit-transition: background 0.1s ease-in-out;
-    -moz-transition: background 0.1s ease-in-out;
-    transition: background 0.1s ease-in-out;
 }
 
 .thumb:hover {
-    background: rgba(64, 192, 255, 1.0);
+    background-color: rgba(64, 192, 255, 1.0);
     box-shadow: 0 0 30px #aef;
     border-color: #aef;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+
+    -webkit-transition: none;
 }
